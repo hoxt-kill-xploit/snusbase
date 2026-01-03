@@ -1,4 +1,7 @@
+#!/usr/bin/env python3
 """
+Author: https://GitHub.com/hoxt-kill-xploit
+Organization home: https://hoxt.pro
 Standalone CLI for querying the Snusbase API.
 
 Usage examples:
