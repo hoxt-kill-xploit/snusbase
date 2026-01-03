@@ -1,0 +1,31 @@
+# Snusbase CLI usage examples (run with `python3 snusbase_cli.py ...`)
+
+# Basic search by email
+python3 snusbase_cli.py search "user@example.com" --types email
+
+# Multiple terms and multiple types
+python3 snusbase_cli.py search "user@example.com" "another@example.net" --types email username
+
+# Wildcard search (prefix/suffix matches)
+python3 snusbase_cli.py search "john" --types username --wildcard
+
+# Group results by a specific column
+python3 snusbase_cli.py search "example.com" --types _domain --group-by _domain
+
+# Limit to specific breach tables
+python3 snusbase_cli.py search "user@example.com" --types email --tables adobe linkedin
+
+# Disable grouping entirely
+python3 snusbase_cli.py search "user@example.com" --types email --group-by false
+
+# Hash/password lookup
+python3 snusbase_cli.py hash "5f4dcc3b5aa765d61d8327deb882cf99" --types hash
+
+# Hash lookup with wildcard and table scoping
+python3 snusbase_cli.py hash "abc123" --types password --wildcard --tables some_hash_db
+
+# IP WHOIS lookup (one or many)
+python3 snusbase_cli.py ipwhois 1.1.1.1 8.8.8.8
+
+# Database statistics
+python3 snusbase_cli.py stats
