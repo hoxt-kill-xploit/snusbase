@@ -15,11 +15,23 @@ def test_search_initialization():
     print("=" * 60)
     
     try:
-        # Use the template API key for testing
-        api = SnusbaseAPI(api_key="sbo9ldwlaaz65ba6te4rkw9vzrfkmd")
+        # Try to load from environment, fall back to template key for demonstration
+        # Note: Template key is for demonstration only and may not work
+        import os
+        from dotenv import load_dotenv
+        
+        load_dotenv()
+        api_key = os.getenv("SNUSBASE_API_KEY")
+        
+        if not api_key:
+            # Use placeholder key for demonstration purposes
+            api_key = "YOUR_API_KEY_HERE_OR_SET_IN_ENV"
+            print("⚠️  Using placeholder API key (set SNUSBASE_API_KEY in .env for real tests)")
+        
+        api = SnusbaseAPI(api_key=api_key)
         print("✓ API client initialized successfully")
         print(f"✓ Base URL: {api.BASE_URL}")
-        print(f"✓ API key configured: {api.api_key[:10]}...")
+        print(f"✓ API key configured: {api.api_key[:10] if len(api.api_key) > 10 else '***'}...")
         return api
     except Exception as e:
         print(f"✗ Failed to initialize API client: {e}")
@@ -157,6 +169,8 @@ def test_search_no_grouping(api):
         print("Type: email")
         print("Group by: false")
         
+        # Note: The API expects the string "false" to disable grouping,
+        # not a boolean False. This matches the CLI --group-by false option.
         result = api.search(
             terms=["user@example.com"],
             types=["email"],
