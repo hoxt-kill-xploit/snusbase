@@ -94,6 +94,27 @@ python3 snusbase_cli.py stats
 
 ---
 
+## Testing
+
+A comprehensive test script is provided to demonstrate the search query functionality:
+
+~~~bash
+python3 test_search.py
+~~~
+
+The test script demonstrates:
+- API client initialization
+- Basic email search
+- Multiple search terms
+- Wildcard search
+- Domain search with custom grouping
+- Search with table scoping
+- Search with grouping disabled
+
+**Note:** The test script will attempt to connect to the Snusbase API. Without a valid API key or network access, it will show connection errors, but successfully demonstrates all query patterns.
+
+---
+
 ## Notes
 
 - Wildcard searches enable partial matching.
